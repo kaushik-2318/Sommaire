@@ -6,6 +6,7 @@ import { fetchAndExtractPdfText } from "@/lib/langchain";
 import { generateSummaryFromOpenAI } from "@/lib/openai";
 import { formatFileNameAsTitle } from "@/utils/file-format";
 import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 interface PdfSummaryType {
     userId?: string,
@@ -45,7 +46,6 @@ export async function generatePdfSummary(uploadResponse: [{
     try {
 
         const pdfText = await fetchAndExtractPdfText(pdfUrl);
-        console.log({ pdfText })
 
         let summary;
 
@@ -84,7 +84,8 @@ export async function generatePdfSummary(uploadResponse: [{
 async function savePdfSummary({ userId, fileUrl, summary, title, fileName }: PdfSummaryType) {
     try {
         const sql = await getDbConnection();
-        await sql`INSERT INTO pdf_summaries(user_id, original_file_url, summary_text, title, file_name) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName});`;
+        const [savedSummary] = await sql`INSERT INTO pdf_summaries(user_id, original_file_url, summary_text, title, file_name) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName}) RETURNING id, summary_text;`;
+        return savedSummary;
     } catch (error) {
         console.error("Failed to save summary", error);
         throw new Error("Error in saving summary");
@@ -117,16 +118,21 @@ export async function storePdfSummaryAction({ fileUrl, summary, title, fileName 
             };
         }
 
-        return {
-            success: true,
-            message: "Summary stored successfully"
-        }
-
     } catch (err) {
         return {
             success: false,
             message: err instanceof Error ? err.message : "Failed to store summary",
             data: null
         };
+    }
+
+    revalidatePath(`/summaries/${saveSummary.id}`)
+
+    return {
+        success: true,
+        message: "Summary stored successfully",
+        data: {
+            id: saveSummary.id
+        }
     }
 }

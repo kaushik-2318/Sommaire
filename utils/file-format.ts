@@ -1,6 +1,5 @@
 export function formatFileNameAsTitle(fileName: string):
     string {
-    // Remove file extension and replace special characters with spaces
     const withoutExtension = fileName.replace(/\.[^/.]+$/, '');
     const withSpaces = withoutExtension
         .replace(/[-_]+/g, ' ')
@@ -11,4 +10,4 @@ export function formatFileNameAsTitle(fileName: string):
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         .join('')
         .trim();
-    }
+}
