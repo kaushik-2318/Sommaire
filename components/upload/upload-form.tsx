@@ -3,7 +3,10 @@ import { toast } from "sonner";
 import { useUploadThing } from "@/utils/uploadthings";
 import UploadFormInput from "./upload-form-input";
 import { z } from "zod";
-import { generatePdfSummary } from "@/actions/upload-action";
+import {
+  generatePdfSummary,
+  storePdfSummaryAction,
+} from "@/actions/upload-action";
 import { useRef, useState } from "react";
 
 const schema = z.object({
@@ -100,15 +103,30 @@ export default function UploadForm() {
       const { data = null, message = null } = result || {};
 
       if (data) {
-        toast("Saving PDF", {
+        let storeResult: any;
+        toast("📃Saving PDF", {
           description: (
             <span className="text-green-500 font-semibold">
               Hang tight! We Are saving your summary! ✨
             </span>
           ),
         });
+        if (data.summary) {
+          storeResult = await storePdfSummaryAction({
+            fileUrl: res[0].serverData.file.url,
+            summary: data.summary,
+            title: data.title,
+            fileName: file.name,
+          });
+        }
+        toast("✨Summary Generated", {
+          description: (
+            <span className="text-green-500 font-semibold">
+              Your PDF has been successfully summarized and saved!✨
+            </span>
+          ),
+        });
         formRef.current?.reset();
-        // if(data.summary){}
       }
     } catch (error) {
       setIsLoading(false);
