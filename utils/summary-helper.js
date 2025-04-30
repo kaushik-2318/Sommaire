@@ -1,11 +1,11 @@
-export const parseSection = (section: string): { title: string; points: string[] } => {
+export const parseSection = (section) => {
     const [title, ...content] = section.split("\n");
 
     const cleanTitle = title.startsWith("#")
         ? title.substring(1).trim()
         : title.trim();
 
-    const points: String[] = [];
+    const points = [];
 
     let currentPoint = "";
 
@@ -28,12 +28,12 @@ export const parseSection = (section: string): { title: string; points: string[]
         title: cleanTitle,
         points: points.filter(
             (point) => point && !point.startsWith("#") && !point.startsWith("[Choose")
-        ) as string[],
+        ),
     };
 };
 
 
-export function parsePoint(point: string) {
+export function parsePoint(point) {
     const isNumbered = /^d+\./.test(point);
     const isMainPoint = /^•/.test(point);
     const emojiRegex = /[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]/u;
@@ -42,7 +42,7 @@ export function parsePoint(point: string) {
     return { isNumbered, isMainPoint, hasEmoji, isEmpty };
 }
 
-export function parseEmojiPoint(content: string) {
+export function parseEmojiPoint(content) {
     const cleanContent = content.replace(/^[•]\s*/, "").trim();
     const match = cleanContent.match(/^(\p{Emoji}+)(.+)$/u);
     if (!match) return null;
