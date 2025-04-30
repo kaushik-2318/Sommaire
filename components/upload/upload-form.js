@@ -20,7 +20,7 @@ const schema = z.object({
         )
         .refine(
             (file) => file.type.startsWith("application/pdf"),
-            "Invalid file type"
+            "File Must be a PDF"
         ),
 });
 
@@ -31,7 +31,7 @@ export default function UploadForm() {
 
     const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
         onClientUploadComplete: () => {
-            console.log("uploaded successfully!");
+            console.log("Uploaded Successfully!");
         },
         onUploadError: (err) => {
             toast("Error occurred while uploading", {
@@ -71,7 +71,7 @@ export default function UploadForm() {
                 return;
             }
 
-            toast("Uploading PDF", {
+            toast("📃 Uploading PDF", {
                 description: (
                     <span className="text-blue-500 font-semibold">
                         We are uploading your PDF to our servers! 🚀
@@ -128,6 +128,7 @@ export default function UploadForm() {
                         </span>
                     ),
                 });
+
                 formRef.current?.reset();
                 router.push(`/summaries/${storeResult.data.id}`);
             }

@@ -9,7 +9,7 @@ export default function UploadHeader() {
           variant={"secondary"}
           className="relative px-6 py-2 text-base font-medium bg-white rounded-full group-hover:bg-gray-50 transition-colors"
         >
-          <Sparkles className="h-6 w-6 text-rose-600 animate-pulse mr-2" />
+          <Sparkles className="h-12 w-12 text-rose-600 animate-pulse mr-2" />
           <p className="text-base">AI-Powered Content Creation</p>
         </Badge>
       </div>

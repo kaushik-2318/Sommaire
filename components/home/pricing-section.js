@@ -17,12 +17,7 @@ const plans = [
     },
 ];
 
-const Pricingcard = ({
-    name,
-    description,
-    items,
-    id,
-}) => {
+const Pricingcard = ({ name, description, items, id }) => {
     return (
         <div className="relative w-full max-w-lg hover:scale-105 hover:transition-all duration-300">
             <div
@@ -54,9 +49,9 @@ const Pricingcard = ({
                 </div>
                 <div className="space-y-2 flex justify-center w-full">
                     <Link
-                        href="/"
+                        href="/sign-in"
                         className={cn(
-                            "w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2",
+                            "w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2 duration-1000",
                             id === "pro"
                                 ? "border-rose-900"
                                 : "border-rose-100 from-rose-400 to-rose-500"

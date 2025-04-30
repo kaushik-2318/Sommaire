@@ -30,14 +30,20 @@ export async function generatePdfSummary(uploadResponse) {
     try {
 
         const pdfText = await fetchAndExtractPdfText(pdfUrl);
-
         let summary;
-
         try {
-            summary = await generateSummaryFromGemini(pdfText);
-        } catch (geminierror) {
-            console.error("Gemini Api Failed", geminierror);
-            throw new Error("Failed to generate summary");
+            summary = await generateSummaryFromOpenAI(pdfText);
+        } catch (err) {
+            console.error(err);
+            if (err && err.message === "Rate Limit exceeded") {
+                try {
+                    summary = await generateSummaryFromGemini(pdfText);
+
+                } catch (genimiError) {
+                    console.error("Gemini API Failed after OpenAI quote exceeded", genimiError)
+                    throw new Error("Failed to generate summary with available AI Providers");
+                }
+            }
         }
 
         if (!summary) {
@@ -101,11 +107,10 @@ export async function storePdfSummaryAction({ fileUrl, summary, title, fileName 
                 message: "Failed to store summary. Please try again...",
             };
         }
-
     } catch (err) {
         return {
             success: false,
-            message: err instanceof Error ? err.message : "Failed to store summary",
+            message: err ? err.message : "Failed to store summary",
             data: null
         };
     }
