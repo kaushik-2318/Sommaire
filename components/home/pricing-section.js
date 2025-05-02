@@ -20,7 +20,7 @@ const listVariants = {
 
 const Pricingcard = ({ name, description, items, id, price, paymentLink }) => {
   return (
-    <MotionDiv variants={listVariants} whileHover={{ scale: 0.2 }} className="relative w-full max-w-lg duration-300 hover:scale-105 hover:transition-all">
+    <MotionDiv variants={listVariants} whileHover={{ scale: 1.02 }} className="relative w-full max-w-lg duration-300 hover:scale-105 hover:transition-all">
       <div
         className={cn(
           'relative z-10 flex h-full flex-col gap-4 rounded-2xl border-[1px] border-gray-500/20 p-8 lg:gap-8',
