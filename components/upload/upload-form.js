@@ -42,8 +42,8 @@ export default function UploadForm() {
         ),
       });
     },
-    onUploadBegin: ({ file }) => {
-      console.log('Upload has begun for file');
+    onUploadBegin: (data) => {
+      console.log('Upload has begun for', data);
     },
   });
 
@@ -107,7 +107,7 @@ export default function UploadForm() {
       });
 
 
-      const uploadFileUrl = uploadResponse[0].serverData.file.url;
+      const uploadFileUrl = uploadResponse[0].serverData.fileUrl;
 
       let storeResult;
 

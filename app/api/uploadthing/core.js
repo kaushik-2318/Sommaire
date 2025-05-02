@@ -13,8 +13,8 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       console.log('Upload complete for userId:', metadata.userId);
-      console.log('file url', file.ufsUrl);
-      console.log('file url', file.key);
-      return { userId: metadata.userId, file };
+      console.log('file url', file.url);
+
+      return { userId: metadata.userId, fileUrl: file.url, fileName: file.name };
     }),
 };
