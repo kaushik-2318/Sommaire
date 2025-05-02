@@ -1,42 +1,39 @@
-'use client'
-
-import { FileText } from "lucide-react";
-import NavLink from "./nav-link";
-import { UserButton } from "@clerk/nextjs";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { FileText } from 'lucide-react';
+import NavLink from './nav-link';
+import { UserButton, SignedIn, SignedOut } from '@clerk/nextjs';
+import PlanBadge from './plan-badge';
 
 export default function Header() {
-    return (
-        <nav className="container flex items-center justify-between py-4 lg:px-8 px-2 mx-auto">
-            <div className="flex lg:flex-1">
-                <NavLink href="/" className="flex items-center gap-1 lg:gap-2 shrink-0">
-                    <FileText className="w-5 h-5 lg:w-8 lg:h-8 text-gray-900 hover:rotate-12 transform transition duration-200 ease-in-out" />
-                    <span className="font-bold lg:text-xl text-gray-900">
-                        Sommaire
-                    </span>
-                </NavLink>
-            </div>
+  return (
+    <nav className="container mx-auto flex items-center justify-between px-2 py-4 lg:px-8">
+      <div className="flex lg:flex-1">
+        <NavLink href="/" className="flex shrink-0 items-center gap-1 lg:gap-2">
+          <FileText className="h-5 w-5 transform text-gray-900 transition duration-200 ease-in-out hover:rotate-12 lg:h-8 lg:w-8" />
+          <span className="font-bold text-gray-900 lg:text-xl">Sommaire</span>
+        </NavLink>
+      </div>
 
-            <div className="flex lg:justify-center gap-4 lg:gap-12 lg:items-center">
-                <SignedIn>
-                    <NavLink href="/dashboard">Your Summaries</NavLink>
-                </SignedIn>
-            </div>
+      <div className="flex gap-4 lg:items-center lg:justify-center lg:gap-12">
+        <SignedIn>
+          <NavLink href="/dashboard">Your Summaries</NavLink>
+        </SignedIn>
+      </div>
 
-            <div className="flex lg:justify-end lg:flex-1">
-                <SignedIn>
-                    <div className="flex gap-2 items-center">
-                        <NavLink href="/upload">Upload a PDF</NavLink>
-                        <SignedIn>
-                            <UserButton />
-                        </SignedIn>
-                    </div>
-                </SignedIn>
+      <div className="flex lg:flex-1 lg:justify-end">
+        <SignedIn>
+          <div className="flex items-center gap-2">
+            <NavLink href="/upload">Upload a PDF</NavLink>
+            <PlanBadge />
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
+        </SignedIn>
 
-                <SignedOut>
-                    <NavLink href="/sign-in">Sign In</NavLink>
-                </SignedOut>
-            </div>
-        </nav>
-    );
+        <SignedOut>
+          <NavLink href="/sign-in">Sign In</NavLink>
+        </SignedOut>
+      </div>
+    </nav>
+  );
 }

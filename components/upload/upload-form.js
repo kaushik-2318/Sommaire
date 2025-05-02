@@ -1,171 +1,217 @@
-"use client";
-import { toast } from "sonner";
-import { useUploadThing } from "@/utils/uploadthings";
-import UploadFormInput from "./upload-form-input";
-import { z } from "zod";
+'use client';
+import { toast } from 'sonner';
+import { useUploadThing } from '@/utils/uploadthings';
+import UploadFormInput from './upload-form-input';
+import { z } from 'zod';
 import {
-    generatePdfSummary,
-    storePdfSummaryAction,
-} from "@/actions/upload-action";
-import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import LoadingSkeleton from "./loading-skeleton";
+  generatePdfSummary,
+  generatePdfText,
+  storePdfSummaryAction,
+} from '@/actions/upload-action';
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import LoadingSkeleton from './loading-skeleton';
+import { formatFileNameAsTitle } from '@/utils/file-format';
 
 const schema = z.object({
-    file: z
-        .instanceof(File, { message: "Invalid File" })
-        .refine(
-            (file) => file.size < 20 * 1024 * 1024,
-            "File Must be less than 20MB"
-        )
-        .refine(
-            (file) => file.type.startsWith("application/pdf"),
-            "File Must be a PDF"
-        ),
+  file: z
+    .instanceof(File, { message: 'Invalid File' })
+    .refine(
+      (file) => file.size < 20 * 1024 * 1024,
+      'File Must be less than 20MB'
+    )
+    .refine(
+      (file) => file.type.startsWith('application/pdf'),
+      'File Must be a PDF'
+    ),
 });
 
 export default function UploadForm() {
-    const formRef = useRef(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const router = useRouter();
+  const formRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-    const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
-        onClientUploadComplete: () => {
-            console.log("Uploaded Successfully!");
-        },
-        onUploadError: (err) => {
-            toast("Error occurred while uploading", {
-                description: (
-                    <span className="text-red-500 font-semibold">{err.message}</span>
-                ),
-            });
-        },
-        onUploadBegin: ({ file }) => {
-            console.log("upload has begun for file");
-        },
-    });
+  const { startUpload, routeConfig } = useUploadThing('pdfUploader', {
+    onClientUploadComplete: () => {
+      console.log('Uploaded Successfully!');
+    },
+    onUploadError: (err) => {
+      toast('Error occurred while uploading', {
+        description: (
+          <span className="font-semibold text-red-500">{err.message}</span>
+        ),
+      });
+    },
+    onUploadBegin: ({ file }) => {
+      console.log('Upload has begun for file');
+    },
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            setIsLoading(true);
-            const formData = new FormData(e.currentTarget);
-            const file = formData.get("file");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      const formData = new FormData(e.currentTarget);
+      const file = formData.get('file');
 
-            if (!file) {
-                console.error("No file selected");
-                return;
-            }
+      if (!file) {
+        console.error('No file selected');
+        return;
+      }
 
-            const validedFields = schema.safeParse({ file });
-            if (!validedFields.success) {
-                toast("❌ Something went Wrong", {
-                    description: (
-                        <span className="text-red-500 font-semibold">
-                            {validedFields.error.flatten().fieldErrors.file?.[0] ??
-                                "Invalid File"}
-                        </span>
-                    ),
-                });
-                setIsLoading(false);
-                return;
-            }
+      const validedFields = schema.safeParse({ file });
 
-            toast("📃 Uploading PDF", {
-                description: (
-                    <span className="text-blue-500 font-semibold">
-                        We are uploading your PDF to our servers! 🚀
-                    </span>
-                ),
-            });
+      if (!validedFields.success) {
+        toast('❌ Something went Wrong', {
+          description: (
+            <span className="font-semibold text-red-500">
+              {validedFields.error.flatten().fieldErrors.file?.[0] ??
+                'Invalid File'}
+            </span>
+          ),
+        });
+        setIsLoading(false);
+        return;
+      }
 
-            const res = await startUpload([file]);
-            if (!res) {
-                toast("⚠️ Something Went Wrong", {
-                    description: (
-                        <span className="text-red-500 font-semibold">
-                            Please use a different file.
-                        </span>
-                    ),
-                });
-                setIsLoading(false);
-                return;
-            }
+      toast('📃 Uploading PDF', {
+        description: (
+          <span className="font-semibold text-blue-500">
+            We are uploading your PDF to our servers! 🚀
+          </span>
+        ),
+      });
 
-            toast("📃Processing PDF", {
-                description: (
-                    <span className="text-green-500 font-semibold">
-                        Hang tight! Our AI is reading through your document! ✨
-                    </span>
-                ),
-            });
+      const uploadResponse = await startUpload([file]);
 
-            const result = await generatePdfSummary(res);
+      if (!uploadResponse) {
+        toast('⚠️ Something Went Wrong', {
+          description: (
+            <span className="font-semibold text-red-500">
+              Please use a different file.
+            </span>
+          ),
+        });
+        setIsLoading(false);
+        return;
+      }
 
-            const { data = null, message = null } = result || {};
 
-            if (data) {
-                let storeResult;
-                toast("📃Saving PDF", {
-                    description: (
-                        <span className="text-green-500 font-semibold">
-                            Hang tight! We Are saving your summary! ✨
-                        </span>
-                    ),
-                });
-                if (data.summary) {
-                    storeResult = await storePdfSummaryAction({
-                        fileUrl: res[0].serverData.file.url,
-                        summary: data.summary,
-                        title: data.title,
-                        fileName: file.name,
-                    });
-                }
-                toast("✨Summary Generated", {
-                    description: (
-                        <span className="text-green-500 font-semibold">
-                            Your PDF has been successfully summarized and saved!✨
-                        </span>
-                    ),
-                });
 
-                formRef.current?.reset();
-                router.push(`/summaries/${storeResult.data.id}`);
-            }
-        } catch (error) {
-            setIsLoading(false);
-            console.log("Error Occured");
-            formRef.current?.reset();
-        } finally {
-            setIsLoading(false);
+      toast('📃 Processing PDF', {
+        description: (
+          <span className="font-semibold text-green-500">
+            Hang tight! Our AI is reading through your document! ✨
+          </span>
+        ),
+      });
+
+
+      const uploadFileUrl = uploadResponse[0].serverData.file.url;
+
+      let storeResult;
+
+      const formattedFileName = formatFileNameAsTitle(file.name);
+
+      const result = await generatePdfText({
+        fileUrl: uploadFileUrl
+      })
+
+      toast('📃 Generating PDF Summary', {
+        description: (
+          <span className="font-semibold text-green-500">
+            Hang tight! Our AI is reading through your document! ✨
+          </span>
+        ),
+      });
+
+      const summaryResult = await generatePdfSummary({
+        pdfText: result?.data?.pdfText ?? '',
+        fileName: formattedFileName,
+      });
+
+      toast('📃 Saving PDF Summary', {
+        description: (
+          <span className="font-semibold text-green-500">
+            Hang tight! Our AI is reading through your document! ✨
+          </span>
+        ),
+      });
+
+      const { data = null, message = null } = summaryResult || {};
+
+      console.log(
+        {
+          summary: data.summary,
+          fileUrl: uploadFileUrl,
+          title: formattedFileName,
+          fileName: file.name,
         }
-    };
+      )
 
-    return (
-        <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto">
-            <UploadFormInput
-                isLoading={isLoading}
-                ref={formRef}
-                onSubmit={handleSubmit}
-            />
-            {isLoading && (
-                <>
-                    <div className="relative">
-                        <div
-                            className="absolute inset-0 flex items-center"
-                            aria-hidden="true"
-                        >
-                            <div className="w-full border-t border-gray-200 dark:border-gray-800" />
-                        </div>
-                        <div className="relative flex justify-center">
-                            <span className="bg-background px-3 text-muted-foreground text-sm">
-                                Processing
-                            </span>
-                        </div>
-                    </div>
-                    <LoadingSkeleton />
-                </>
-            )}
+      if (data?.summary) {
+        storeResult = await storePdfSummaryAction({
+          summary: data.summary,
+          fileUrl: uploadFileUrl,
+          title: formattedFileName,
+          fileName: file.name,
+        });
+
+
+        toast('✨Summary Generated!', {
+          description: (
+            <span className="font-semibold text-green-500">
+              Your PDF has been successfully summarized and saved!✨
+            </span>
+          ),
+        });
+        formRef.current?.reset();
+        router.push(`/summaries/${storeResult.data.id}`);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      console.log('Error Occured');
+      formRef.current?.reset();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-8">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+          <div className="w-full border-t border-gray-200 dark:border-gray-800" />
         </div>
-    );
+        <div className="relative flex justify-center">
+          <span className="bg-background text-muted-foreground px-3 text-sm">
+            Uplaod PDF
+          </span>
+        </div>
+      </div>
+      <UploadFormInput
+        isLoading={isLoading}
+        ref={formRef}
+        onSubmit={handleSubmit}
+      />
+      {isLoading && (
+        <>
+          <div className="relative">
+            <div
+              className="absolute inset-0 flex items-center"
+              aria-hidden="true"
+            >
+              <div className="w-full border-t border-gray-200 dark:border-gray-800" />
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-background text-muted-foreground px-3 text-sm">
+                Processing
+              </span>
+            </div>
+          </div>
+          <LoadingSkeleton />
+        </>
+      )}
+    </div>
+  );
 }

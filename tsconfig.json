@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/sign-up/[[...sign-up]]/page.js", "components/upload/loading-skeleton.js", "components/upload/upload-header.js", "components/summaries/download-summary-button.js", "components/summaries/content-section.js", "utils/summary-helper.js"  ],
+, "app/sign-up/[[...sign-up]]/page.js", "components/upload/loading-skeleton.js", "components/upload/upload-header.js", "components/summaries/download-summary-button.js", "components/summaries/content-section.js", "utils/summary-helper.js", "app/contact/page.js", "lib/user.js"  ],
   "exclude": [
     "node_modules"
   ]
