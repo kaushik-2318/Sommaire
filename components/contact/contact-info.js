@@ -43,7 +43,7 @@ export default function ContactInfo() {
                             <div className="ml-4">
                                 <p className="text-sm font-medium text-gray-900">Address</p>
                                 <p className="mt-1 text-sm text-gray-600">
-                                    KP-5(A), Campus 12, KIIT University
+                                    KIIT University
                                     <br />
                                     Bhubaneswar, Odisha - 751024
                                     <br />

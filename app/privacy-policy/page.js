@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
                                         </a>
                                     </p>
                                     <p>Phone: +91 70617 61587</p>
-                                    <p>Address: KP-5(A), Campus 12, KIIT University, Bhubaneswar, Odisha - 751024</p>
+                                    <p>Address: KIIT University, Bhubaneswar, Odisha - 751024</p>
                                 </div>
                             </div>
                         </CardContent>

@@ -31,7 +31,7 @@ export default function TermsPage() {
                         <CardContent className="p-6 sm:p-8">
                             <MotionP variants={itemVariants} className="mb-6 text-gray-700">
                                 For the purpose of these Terms and Conditions, the terms <strong>"we", "us", "our"</strong> refer to{" "}
-                                <strong>KAUSHIK VERMA</strong>, whose registered/operational office is KP-5(A), Campus 12, KIIT
+                                <strong>KAUSHIK VERMA</strong>, whose registered/operational office is KIIT
                                 University, Bhubaneswar, ODISHA 751024. The terms <strong>"you", "your", "user", "visitor"</strong>{" "}
                                 refer to any natural or legal person who is visiting our website and/or agreed to purchase from us.
                             </MotionP>
