@@ -29,7 +29,6 @@ export async function deleteSummaryAction({ summaryId }) {
       }
     }
 
-
     if (result.length > 0) {
       revalidatePath('/dashboard');
       return { success: true };

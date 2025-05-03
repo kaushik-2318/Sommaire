@@ -8,13 +8,13 @@ function HeaderSkeleton() {
     return (
         <div >
             <div className="flex flex-col gap-2 ">
-                <h1 >
+                <div >
                     <Skeleton className="h-10 w-48 " />
-                </h1>
+                </div>
 
-                <p >
+                <div >
                     <Skeleton className=" h-10 w-96" />
-                </p>
+                </div>
             </div>
 
         </div>

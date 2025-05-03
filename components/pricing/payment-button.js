@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
-import {  useState } from 'react';
+import { useState } from 'react';
 import Script from 'next/script';
 import { useAuth } from '@clerk/nextjs';
 
@@ -17,72 +17,65 @@ const PaymentButton = ({ email, razorpayKey }) => {
 
     const handlePayment = async () => {
         if (!isScriptLoaded || !isLoaded || !userId) {
-            console.error("Razorpay script not loaded or user not authenticated");
+            console.error("Script not loaded or user not authenticated");
             return;
         }
 
         try {
             setIsProcessing(true);
 
-            const res = await fetch('/api/payment/createOrder', {
+            const res = await fetch('/api/payment/createSubscription', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, userId }),
             });
 
             const resData = await res.json();
 
             if (!resData.success) {
-                throw new Error(resData.error || "Failed to create order");
+                throw new Error(resData.error || "Failed to create subscription");
             }
 
-            const order = resData.order;
+            const subscription = resData.subscription;
 
             const options = {
                 key: razorpayKey,
-                amount: order.amount,
-                currency: order.currency,
-                name: 'Upgrade to Pro',
-                order_id: order.id,
+                subscription_id: subscription.id,
+                name: 'Sommaire AI Pro',
                 handler: async function (response) {
-                    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-
-                    const verifyRes = await fetch('/api/payment/verify', {
+                    const { razorpay_payment_id, razorpay_subscription_id, razorpay_signature } = response;
+                    const verifyRes = await fetch('/api/payment/verifySubscription', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
                             razorpay_payment_id,
-                            razorpay_order_id,
+                            razorpay_subscription_id,
                             razorpay_signature,
-                            email: email,
-                            userId: userId,
+                            email,
+                            userId,
                         }),
                     });
 
                     const verifyData = await verifyRes.json();
-
                     if (verifyData.success) {
+                        setIsProcessing(false);
                         window.location.href = '/dashboard';
                     }
                 },
                 prefill: {
-                    email: email
+                    email,
                 },
-                theme: {
-                    color: '#be123c'
-                }
             };
 
             const razorpay = new window.Razorpay(options);
             razorpay.open();
         } catch (error) {
-            console.error("Payment error:", error);
-        } finally {
-            setIsProcessing(false);
+            console.error("Subscription error:", error);
         }
     };
+
 
     return (
         <>

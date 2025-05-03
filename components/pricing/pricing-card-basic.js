@@ -23,9 +23,7 @@ export default function PricingCardBasic({ name, description, items, id, price, 
 
                 <MotionDiv viewport={{ once: true }} variants={listVariants} className="flex gap-2">
                     <p className="text-5xl font-extrabold tracking-tight">{price}</p>
-                    <div className="mb-[5px] flex flex-col justify-end">
-                        {/* <p className="text-xs">/month</p> */}
-                    </div>
+
                 </MotionDiv>
 
                 <MotionDiv viewport={{ once: true }} variants={listVariants} className="flex-1 space-y-2.5 text-base leading-relaxed">

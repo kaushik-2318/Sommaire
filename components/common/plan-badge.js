@@ -12,7 +12,7 @@ export default async function PlanBadge() {
 
     let priceId = await getPriceId(user?.id);
 
-    let planName = 'Buy a Plan';
+    let planName;
 
     const plan = pricingPlans.find((plan) => plan.priceId === priceId);
 

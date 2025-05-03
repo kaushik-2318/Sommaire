@@ -2,14 +2,18 @@ import React from 'react'
 import { MotionDiv } from '../common/motion-wrapper';
 import { listVariants } from '@/utils/constants';
 import { cn } from '@/lib/utils';
-import { CheckIcon } from 'lucide-react';
+import { ArrowRight, CheckIcon } from 'lucide-react';
 import PaymentButton from './payment-button';
 import { currentUser } from '@clerk/nextjs/server';
-
+import { getPriceId } from "@/lib/user";
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default async function PricingCardPro({ name, description, items, id, price }) {
     const user = await currentUser();
     const email = user?.emailAddresses?.[0]?.emailAddress;
+
+    let priceId = await getPriceId(user?.id);
 
     return (
         <MotionDiv viewport={{ once: true }} variants={listVariants} whileHover={{ scale: 1.02 }} className="relative w-full max-w-lg duration-300 hover:scale-105 hover:transition-all">
@@ -43,7 +47,16 @@ export default async function PricingCardPro({ name, description, items, id, pri
                 </MotionDiv>
 
                 <MotionDiv viewport={{ once: true }} variants={listVariants} className="flex w-full justify-center space-y-2">
-                    <PaymentButton email={email} razorpayKey={process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID} />
+                    {priceId === 'basic_free' ? (
+                        <PaymentButton email={email} razorpayKey={process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID} />
+                    ) : (
+                        <Link className='w-full' href="/upload">
+                            <Button variant="link" className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-rose-900 bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white duration-1000 hover:from-rose-500 hover:to-rose-800">
+                                Try Now <ArrowRight size={18} />
+                            </Button>
+                        </Link>
+                    )
+                    }
                 </MotionDiv>
             </div>
         </MotionDiv>

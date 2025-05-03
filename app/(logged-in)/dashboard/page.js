@@ -22,7 +22,7 @@ export default async function page() {
 
   const summaries = await getSummaries(user?.id);
 
-  const { hasReachedLimit, uploadLimit } = await hasReachedUploadLimit(user?.id);
+  const hasReachedLimit = await hasReachedUploadLimit(user?.id);
 
   return (
     <main className="min-h-screen">
@@ -57,11 +57,11 @@ export default async function page() {
           </div>
 
           {hasReachedLimit && (
-            <MotionDiv variants={itemVariants} initial={'hidden'} whileInView={'visible'} viewport={{ once: true }} whileHover={{ scale: 1.05 }} className="mb-6">
+            <MotionDiv variants={itemVariants} initial={'hidden'} whileInView={'visible'} viewport={{ once: true }} className="mb-6">
               <div className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-rose-800">
                 <p className="text-sm flex gap-1">
-                  You've reached the limit of {uploadLimit} uploads on the Basic plan.
-                  Please delete some summaries to make room for new ones or {" "}  <Link className='flex ' href='/#pricing'> <span className='font-bold underline'> upgrade to Pro </span><ArrowRight /> for more uploads.</Link>
+                  You've reached the limit of 5 uploads on the Basic plan.
+                  Please delete some summaries to make room for new ones or {" "}  <Link className='flex items-center justify-between' href='/#pricing'> <span className='font-bold underline'> upgrade to Pro </span><ArrowRight size={18} /> for more uploads.</Link>
                 </p>
               </div>
             </MotionDiv>

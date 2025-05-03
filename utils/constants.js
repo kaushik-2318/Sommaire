@@ -9,7 +9,7 @@ export const pricingPlans = [
             'Standard processing speed',
             'Email support',
         ],
-        paymentLink: "/sign-in",
+        paymentLink: "/upload",
         priceId: "basic_free"
     },
     {
@@ -23,7 +23,6 @@ export const pricingPlans = [
             'Email support',
             'Markdown Export',
         ],
-        paymentLink: process.env.RAZORPAY_PAYMENT_LINK,
         priceId: "pro_monthly"
     },
 ];

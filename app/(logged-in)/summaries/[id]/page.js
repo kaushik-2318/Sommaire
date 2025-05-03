@@ -30,7 +30,7 @@ export default async function SummaryPage(props) {
     <div className="relative isolate min-h-screen bg-linear-to-b from-rose-100/60 to-white">
       <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
       <div className="conatiner mx-auto flex flex-col gap-4">
-        <div className="px-4 py-6 sm:px-6 sm:py-12 lg:px-8 lg:py-24">
+        <div className="px-4 py-6  sm:px-6 sm:py-12 lg:px-8">
           <MotionDiv className="flex flex-col" viewport={{ once: true }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <SummaryHeader
               title={title}
@@ -48,7 +48,7 @@ export default async function SummaryPage(props) {
             />
           )}
         </div>
-        <MotionDiv className="relative mt-4 sm:mt-8 lg:mt-16">
+        <MotionDiv className="relative my-4 sm:my-8 lg:my-16 ">
           <div className="relative mx-auto max-w-4xl rounded-2xl border border-rose-100/30 bg-white/80 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl sm:rounded-3xl sm:p-6 lg:p-8">
             <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-rose-50/50 via-orange-50/30 to-transparent opacity-50 sm:rounded-3xl" />
 

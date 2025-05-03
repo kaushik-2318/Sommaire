@@ -3,6 +3,7 @@ import { MotionDiv, MotionH1, MotionP } from "@/components/common/motion-wrapper
 import { containerVariants, itemVariants } from "@/utils/constants"
 import { Card, CardContent } from "@/components/ui/card"
 import { Ban, AlertCircle, HelpCircle, Mail } from "lucide-react"
+import Link from "next/link"
 
 export default function RefundPolicyPage() {
     return (
@@ -41,6 +42,7 @@ export default function RefundPolicyPage() {
                                     icon={<Ban className="h-10 w-10 text-rose-500" />}
                                     title="No Cancellations"
                                     description="Once a product or service has been purchased or an order has been placed through our website, it cannot be cancelled under any circumstances."
+                                    cancellation="Click here to Cancel Subscription"
                                 />
 
                                 <PolicySection
@@ -83,13 +85,13 @@ export default function RefundPolicyPage() {
     )
 }
 
-function PolicySection({ icon, title, description }) {
+function PolicySection({ icon, title, description, cancellation }) {
     return (
         <MotionDiv viewport={{ once: true }} variants={itemVariants} className="flex gap-6">
             <div className="shrink-0">{icon}</div>
             <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>
-                <p className="text-gray-700">{description}</p>
+                <p className="text-gray-700">{description} <Link className="text-blue-500 underline" href=""> {cancellation}</Link></p>
             </div>
         </MotionDiv>
     )
