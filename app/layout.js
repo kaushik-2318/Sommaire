@@ -5,6 +5,8 @@ import Footer from "@/components/common/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { ORIGIN_URL } from "@/utils/helper";
+import Preloader from "@/components/common/preloader";
+import LoadingBar from "@/components/common/loading-bar";
 
 const fontSans = FontSans({
   variable: "--font-sans",
@@ -34,6 +36,8 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`${fontSans.variable} font-sans antialiased`}>
+          <Preloader />
+          <LoadingBar />
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
