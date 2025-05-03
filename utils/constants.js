@@ -10,7 +10,7 @@ export const pricingPlans = [
             'Email support',
         ],
         paymentLink: "/sign-in",
-        priceId: "price_basic_free"
+        priceId: "basic_free"
     },
     {
         id: 'pro',
@@ -24,7 +24,7 @@ export const pricingPlans = [
             'Markdown Export',
         ],
         paymentLink: process.env.RAZORPAY_PAYMENT_LINK,
-        priceId: "price_pro_monthly"
+        priceId: "pro_monthly"
     },
 ];
 

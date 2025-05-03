@@ -139,15 +139,7 @@ export default function UploadForm() {
       });
 
       const { data = null, message = null } = summaryResult || {};
-
-      console.log(
-        {
-          summary: data.summary,
-          fileUrl: uploadFileUrl,
-          title: formattedFileName,
-          fileName: file.name,
-        }
-      )
+    
 
       if (data?.summary) {
         storeResult = await storePdfSummaryAction({

@@ -19,7 +19,6 @@ export async function generatePdfText({ fileUrl }) {
 
   try {
     const pdfText = await fetchAndExtractPdfText(fileUrl);
-    console.log({ pdfText })
 
     if (!pdfText) {
       return {
@@ -54,7 +53,6 @@ export async function generatePdfSummary({ pdfText, fileName }) {
       if (error && error?.message === 'RATE_LIMIT_EXCEEDED') {
         try {
           summary = await generateSummaryFromGemini(pdfText);
-          console.log({ summary });
         } catch (geminiError) {
           console.error('Gemini API Error', geminiError);
           throw error('Failed to generate summary with availabe AI Provider');

@@ -49,7 +49,7 @@ export default function SummaryCard({ summary }) {
           <div className="flex flex-col gap-3 sm:gap-4">
             <SummaryHeader
               fileUrl={summary.original_file_url}
-              title={summary.title}
+              title={summary.file_name}
               createdAt={summary.created_at}
             />
             <p className="line-clamp-2 pl-2 text-sm text-gray-600 sm:text-base">

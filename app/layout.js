@@ -36,8 +36,8 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`${fontSans.variable} font-sans antialiased`}>
-          <Preloader />
-          <LoadingBar />
+          {/* <Preloader /> */}
+          {/* <LoadingBar /> */}
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>

@@ -1,10 +1,13 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Script from 'next/script';
+import { useAuth } from '@clerk/nextjs';
+
 
 const PaymentButton = ({ email, razorpayKey }) => {
+    const { userId, isLoaded } = useAuth();
     const [isScriptLoaded, setIsScriptLoaded] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
 
@@ -13,8 +16,8 @@ const PaymentButton = ({ email, razorpayKey }) => {
     };
 
     const handlePayment = async () => {
-        if (!isScriptLoaded) {
-            console.error("Razorpay script not loaded yet");
+        if (!isScriptLoaded || !isLoaded || !userId) {
+            console.error("Razorpay script not loaded or user not authenticated");
             return;
         }
 
@@ -54,6 +57,7 @@ const PaymentButton = ({ email, razorpayKey }) => {
                             razorpay_order_id,
                             razorpay_signature,
                             email: email,
+                            userId: userId,
                         }),
                     });
 

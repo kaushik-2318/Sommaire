@@ -18,10 +18,10 @@ export default function UpgradeRequired() {
                     </div>
 
                     <h1 className='text-4xl font-bold tracking-tighter bg-linear-to-r from-gray-900  to-gray-600 bg-clip-text text-transparent'>
-                        Subscription Required
+                        Upgrade Required
                     </h1>
                     <p className='text-lg leading-8 text-gray-600 border-2 border-rose-200 bg-white/50 backdrop-blur-sm rounded-lg p-6 border-dashed max-w-xl'>
-                        You need to Upgrade to the Basic Plan or the Pro Plan to access this feature 💗
+                        You need to Upgrade to the Pro Plan to get more uploads.💗
                     </p>
                     <Button asChild className="bg-linear-to-r from-rose-500 to-rose-700 hover:from-rose-600 hover:to-rose-700 text-white">
                         <Link href="/#pricing" className="flex gap-2 items-center">

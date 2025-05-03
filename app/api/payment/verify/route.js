@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { getDbConnection } from '@/lib/db';
 import { pricingPlans } from '@/utils/constants';
 
+
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -12,15 +13,9 @@ export async function POST(req) {
       razorpay_payment_id,
       razorpay_signature,
       email,
+      userId
     } = body;
-
-    console.log(
-      razorpay_order_id,
-      razorpay_payment_id,
-      razorpay_signature,
-      email
-    );
-
+ 
     if (
       !razorpay_order_id ||
       !razorpay_payment_id ||
@@ -44,18 +39,16 @@ export async function POST(req) {
 
     const sql = await getDbConnection();
 
-    const proPlan = pricingPlans.find(plan => plan.id === 'pro');
-    const proPriceId = proPlan ? proPlan.priceId : "";
 
     await sql`
-      INSERT INTO payments (amount, status, stripe_payment_id, price_id, user_email)
-      VALUES (${200}, ${'success'}, ${razorpay_payment_id}, ${razorpay_order_id}, ${email});
+      INSERT INTO payments (amount, status, razorpay_payment_id, order_id, user_email, user_id)
+      VALUES (${200}, ${'success'}, ${razorpay_payment_id}, ${razorpay_order_id}, ${email}, ${userId});
     `;
-    
+
     await sql`
       UPDATE users 
-      SET status = 'active', price_id = ${proPriceId}
-      WHERE email = ${email};
+      SET status = 'active', price_id = 'pro_monthly'
+      WHERE email = ${email} AND user_id = ${userId};
     `;
 
     return NextResponse.json({ success: true });

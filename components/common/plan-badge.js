@@ -10,13 +10,7 @@ export default async function PlanBadge() {
 
     if (!user?.id) return null;
 
-    const email = user?.emailAddresses?.[0]?.emailAddress;
-
-    let priceId = null;
-
-    if (email) {
-        priceId = await getPriceId(email);
-    }
+    let priceId = await getPriceId(user?.id);
 
     let planName = 'Buy a Plan';
 

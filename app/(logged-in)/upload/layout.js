@@ -1,5 +1,5 @@
 import UpgradeRequired from '@/components/common/upgrade-required';
-import { getSubscriptionStatus, hasActivePlan } from '@/lib/user';
+import { hasReachedUploadLimit } from '@/lib/user';
 import { currentUser } from '@clerk/nextjs/server'
 import React from 'react'
 
@@ -11,9 +11,10 @@ export default async function Layout({ children }) {
         redirect('/sign-in');
     }
 
-    const hasActiveSubscription = await hasActivePlan(user.emailAddresses[0].emailAddress);
+    const uploadLimit = await hasReachedUploadLimit(user?.id);
+    
 
-    if (hasActiveSubscription) {
+    if (uploadLimit) {
         return <UpgradeRequired />
     }
 

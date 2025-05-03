@@ -13,10 +13,13 @@ import { MotionDiv, MotionH1, MotionP } from '@/components/common/motion-wrapper
 import { itemVariants } from '@/utils/constants';
 
 export default async function page() {
+  
   const user = await currentUser();
+  
   if (!user?.id) {
     return redirect('/sign-in');
   }
+  
   const summaries = await getSummaries(user?.id);
 
   const { hasReachedLimit, uploadLimit } = await hasReachedUploadLimit(user?.id);
