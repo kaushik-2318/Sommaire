@@ -10,11 +10,12 @@ export const pricingPlans = [
             'Email support',
         ],
         paymentLink: "/sign-in",
+        priceId: "price_basic_free"
     },
     {
-        id: 'Pro',
+        id: 'pro',
         name: 'Pro',
-        price: 100,
+        price: 200,
         description: 'Perfect for occasional users',
         items: [
             '10 PDF summaries',
@@ -22,8 +23,8 @@ export const pricingPlans = [
             'Email support',
             'Markdown Export',
         ],
-        paymentLink: "",
-        priceId: ""
+        paymentLink: process.env.RAZORPAY_PAYMENT_LINK,
+        priceId: "price_pro_monthly"
     },
 ];
 
@@ -81,6 +82,19 @@ export const itemVariants = {
             damping: 15,
             striffness: 50,
             duration: 0.8,
+        }
+    }
+}
+
+export const listVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+        opacity: 1, x: 0,
+        transition: {
+            type: 'spring',
+            duration: 0.5,
+            damping: 20,
+            stiffness: 100
         }
     }
 }
