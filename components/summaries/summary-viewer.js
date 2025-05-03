@@ -36,7 +36,7 @@ export default function SummaryViewer({ summary }) {
   return (
     <Card className="from-background via-background/95 relative h-[500px] w-full overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg sm:h-[600px] lg:h-[700px] xl:w-[600px]">
       <ProgressBar sections={sections} currentSection={currentSection} />
-      <MotionDiv key={currentSection} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.2, ease: 'easeInOut' }} exit={{ opacity: 0 }} className="scrollbar-hide h-full overflow-y-auto pt-12 pb-20 sm:pt-16 sm:pb-24">
+      <MotionDiv viewport={{ once: true }} key={currentSection} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.2, ease: 'easeInOut' }} exit={{ opacity: 0 }} className="scrollbar-hide h-full overflow-y-auto pt-12 pb-20 sm:pt-16 sm:pb-24">
         <div className="px-4 sm:px-6">
           <SectionTitle title={sections[currentSection]?.title || ''} />
           <ContentSection

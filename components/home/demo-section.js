@@ -25,7 +25,7 @@ export default function DemoSection() {
           </div>
 
           <div className="mb-3 text-center">
-            <MotionH3 initial={{ y: 20, opcaity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="mx-auto max-w-2xl px-4 text-3xl font-bold sm:px-4">
+            <MotionH3 viewport={{ once: true }} initial={{ y: 20, opcaity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="mx-auto max-w-2xl px-4 text-3xl font-bold sm:px-4">
               Watch how Sommaire transforms{' '}
               <span className="bg-gradient-to-r from-rose-500 to-rose-700 bg-clip-text text-transparent">
                 this Next.js course PDF
@@ -34,8 +34,8 @@ export default function DemoSection() {
             </MotionH3>
           </div>
         </div>
-        <div className="flex items-center justify-center px-2 sm:px-4 lg:px-6">
-          <MotionDiv initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>
+        <div className="flex items-center justify-center px-2 sm:px-4 lg:px-6 mt-10">
+          <MotionDiv viewport={{ once: true }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>
             <SummaryViewer summary={demoText} />
           </MotionDiv>
         </div>

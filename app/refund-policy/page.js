@@ -10,6 +10,7 @@ export default function RefundPolicyPage() {
             <BgGradient className="from-rose-100 via-red-50 to-orange-100" />
             <MotionDiv
                 variants={containerVariants}
+                viewport={{ once: true }}
                 initial="hidden"
                 animate="visible"
                 className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-24"
@@ -17,19 +18,20 @@ export default function RefundPolicyPage() {
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-12 text-center">
                         <MotionH1
+                            viewport={{ once: true }}
                             variants={itemVariants}
                             className="bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-5xl"
                         >
                             Cancellation & Refund Policy
                         </MotionH1>
-                        <MotionP variants={itemVariants} className="mt-4 text-lg text-gray-600">
+                        <MotionP viewport={{ once: true }} variants={itemVariants} className="mt-4 text-lg text-gray-600">
                             Last updated: May 1, 2025
                         </MotionP>
                     </div>
 
                     <Card className="overflow-hidden border-rose-100/30 bg-white/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl">
                         <CardContent className="p-6 sm:p-8">
-                            <MotionP variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
+                            <MotionP viewport={{ once: true }} variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
                                 At <strong>KAUSHIK VERMA</strong>, we value transparency and strive to offer high-quality digital
                                 content and services through our platform. However, please note the following:
                             </MotionP>
@@ -83,7 +85,7 @@ export default function RefundPolicyPage() {
 
 function PolicySection({ icon, title, description }) {
     return (
-        <MotionDiv variants={itemVariants} className="flex gap-6">
+        <MotionDiv viewport={{ once: true }} variants={itemVariants} className="flex gap-6">
             <div className="shrink-0">{icon}</div>
             <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>

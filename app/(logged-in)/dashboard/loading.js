@@ -22,7 +22,7 @@ function HeaderSkeleton() {
 }
 
 function SummaryCardSkeleton() {
-    return <MotionDiv variation={itemVariants} initial={'hidden'} animate={'visible'} className='rounded-lg border bg-card text-card-foreground shadow-sm'>
+    return <MotionDiv variation={itemVariants} initial={'hidden'} animate={'visible'} viewport={{ once: true }} className='rounded-lg border bg-card text-card-foreground shadow-sm'>
         <Skeleton className="h-48 w-full rounded-lg" />
     </MotionDiv>
 }

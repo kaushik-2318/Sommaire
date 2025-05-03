@@ -41,7 +41,7 @@ export default function LoadingBar() {
 
     return (
         <div className="fixed top-0 left-0 right-0 z-50 h-1">
-            <MotionDiv
+            <MotionDiv viewport={{ once: true }}
                 className="h-full bg-linear-to-r from-rose-500 via-rose-400 to-rose-500 bg-[length:200%_100%]"
                 style={{ width: `${progress}%` }}
                 animate={{

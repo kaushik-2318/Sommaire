@@ -18,7 +18,7 @@ export function Logo({ size = "default", className, href = "/" }) {
 
     const content = (
         <div className={cn("flex items-center gap-2", className)}>
-            <MotionDiv whileHover={{ rotate: 12 }} transition={{ type: "spring", stiffness: 300, damping: 10 }}>
+            <MotionDiv viewport={{ once: true }} whileHover={{ rotate: 12 }} transition={{ type: "spring", stiffness: 300, damping: 10 }}>
                 <FileText className={cn("text-rose-500", sizeClasses[size])} />
             </MotionDiv>
             <span className={cn("font-bold text-gray-900 dark:text-white", textSizeClasses[size])}>Sommaire</span>

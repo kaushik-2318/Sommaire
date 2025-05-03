@@ -8,7 +8,7 @@ export default function TermsPage() {
     return (
         <div className="relative min-h-screen">
             <BgGradient className="from-amber-100 via-orange-50 to-rose-100" />
-            <MotionDiv
+            <MotionDiv viewport={{ once: true }}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -16,27 +16,27 @@ export default function TermsPage() {
             >
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-12 text-center">
-                        <MotionH1
+                        <MotionH1 viewport={{ once: true }}
                             variants={itemVariants}
                             className="bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-5xl"
                         >
                             Terms & Conditions
                         </MotionH1>
-                        <MotionP variants={itemVariants} className="mt-4 text-lg text-gray-600">
+                        <MotionP viewport={{ once: true }} variants={itemVariants} className="mt-4 text-lg text-gray-600">
                             Last updated: May 1, 2025
                         </MotionP>
                     </div>
 
                     <Card className="overflow-hidden border-rose-100/30 bg-white/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl">
                         <CardContent className="p-6 sm:p-8">
-                            <MotionP variants={itemVariants} className="mb-6 text-gray-700">
+                            <MotionP viewport={{ once: true }} variants={itemVariants} className="mb-6 text-gray-700">
                                 For the purpose of these Terms and Conditions, the terms <strong>"we", "us", "our"</strong> refer to{" "}
                                 <strong>KAUSHIK VERMA</strong>, whose registered/operational office is KIIT
                                 University, Bhubaneswar, ODISHA 751024. The terms <strong>"you", "your", "user", "visitor"</strong>{" "}
                                 refer to any natural or legal person who is visiting our website and/or agreed to purchase from us.
                             </MotionP>
 
-                            <MotionP variants={itemVariants} className="mb-6 text-gray-700">
+                            <MotionP viewport={{ once: true }} variants={itemVariants} className="mb-6 text-gray-700">
                                 Your use of the website and/or purchases from us are governed by the following Terms and Conditions:
                             </MotionP>
 
@@ -108,7 +108,7 @@ export default function TermsPage() {
 
 function TermsSection({ icon, title, items }) {
     return (
-        <MotionDiv variants={itemVariants} className="space-y-3">
+        <MotionDiv viewport={{ once: true }} variants={itemVariants} className="space-y-3">
             <div className="flex items-center gap-3">
                 {icon}
                 <h3 className="text-xl font-semibold text-gray-900">{title}</h3>

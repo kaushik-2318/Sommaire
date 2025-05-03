@@ -40,7 +40,7 @@ const StatusBadge = ({ status }) => {
 
 export default function SummaryCard({ summary }) {
   return (
-    <MotionDiv variants={itemVariants} initial={'hidden'} whileInView={'visible'} whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}>
+    <MotionDiv viewport={{ once: true }} variants={itemVariants} initial={'hidden'} whileInView={'visible'} whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}>
       <Card className="relative h-full">
         <div className="absolute top-2 right-2">
           <DeleteButton summaryId={summary.id} />

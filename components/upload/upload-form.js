@@ -95,8 +95,7 @@ export default function UploadForm() {
         setIsLoading(false);
         return;
       }
-
-
+      console.log('Upload Response', uploadResponse);
 
       toast('📃 Processing PDF', {
         description: (
@@ -108,6 +107,7 @@ export default function UploadForm() {
 
 
       const uploadFileUrl = uploadResponse[0].serverData.fileUrl;
+      const key = uploadResponse[0].serverData.key;
 
       let storeResult;
 
@@ -147,6 +147,7 @@ export default function UploadForm() {
           fileUrl: uploadFileUrl,
           title: formattedFileName,
           fileName: file.name,
+          key,
         });
 
 

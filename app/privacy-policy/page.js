@@ -12,24 +12,26 @@ export default function PrivacyPolicyPage() {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
+                viewport={{ once: true }}
                 className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-24"
             >
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-12 text-center">
                         <MotionH1
                             variants={itemVariants}
+                            viewport={{ once: true }}
                             className="bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-5xl"
                         >
                             Privacy Policy
                         </MotionH1>
-                        <MotionP variants={itemVariants} className="mt-4 text-lg text-gray-600">
+                        <MotionP viewport={{ once: true }} variants={itemVariants} className="mt-4 text-lg text-gray-600">
                             Effective Date: May 1, 2025
                         </MotionP>
                     </div>
 
                     <Card className="overflow-hidden border-rose-100/30 bg-white/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/90 hover:shadow-2xl">
                         <CardContent className="p-6 sm:p-8">
-                            <MotionP variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
+                            <MotionP viewport={{ once: true }} variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
                                 This Privacy Policy outlines how <strong>Kaushik Verma</strong> collects, uses, and protects any
                                 information that you provide when using this website:{" "}
                                 <a href="https://sommaire-kv.vercel.app" className="text-rose-600 hover:underline">
@@ -38,7 +40,7 @@ export default function PrivacyPolicyPage() {
                                 .
                             </MotionP>
 
-                            <MotionP variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
+                            <MotionP viewport={{ once: true }} variants={itemVariants} className="mb-8 text-gray-700 leading-relaxed">
                                 Kaushik Verma is committed to ensuring your privacy is protected. Should we ask you to provide
                                 information by which you can be identified while using this site, rest assured it will only be used in
                                 accordance with this policy.
@@ -144,10 +146,10 @@ export default function PrivacyPolicyPage() {
 
 function PrivacySection({ icon, title, content }) {
     return (
-        <MotionDiv variants={itemVariants} className="space-y-4">
+        <MotionDiv viewport={{ once: true }} variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-3">
                 {icon}
-                <MotionH2 className="text-xl font-semibold text-gray-900">{title}</MotionH2>
+                <MotionH2  className="text-xl font-semibold text-gray-900">{title}</MotionH2>
             </div>
             <div className="ml-11">{content}</div>
         </MotionDiv>
