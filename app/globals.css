@@ -1,11 +1,12 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Noto Color Emoji", ;
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Noto Color Emoji';
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -60,7 +61,6 @@
 }
 
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -137,15 +137,15 @@
   }
 
   h1 {
-    @apply text-4xl md:text-6xl xl:text-7xl font-bold;
+    @apply text-4xl font-bold md:text-6xl xl:text-7xl;
   }
 
   h2 {
-    @apply text-xl lg:text-3xl font-medium;
+    @apply text-xl font-medium lg:text-3xl;
   }
 
   h3 {
-    @apply text-2xl lg:text-4xl font-medium;
+    @apply text-2xl font-medium lg:text-4xl;
   }
 
   a {
@@ -153,11 +153,10 @@
   }
 
   button {
-    @apply hover:cursor-pointer bg-rose-600 hover:bg-rose-700;
+    @apply bg-rose-600 hover:cursor-pointer hover:bg-rose-700;
   }
 
   @keyframes gradient-x {
-
     0%,
     100% {
       background-size: 200% 100%;
@@ -175,7 +174,6 @@
   }
 
   @keyframes rotate-concice {
-
     0%,
     100% {
       transform: rotate(2deg);
@@ -199,7 +197,9 @@
   .page-transition-enter-active {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
+    transition:
+      opacity 300ms,
+      transform 300ms;
   }
 
   .page-transition-exit {
@@ -210,7 +210,9 @@
   .page-transition-exit-active {
     opacity: 0;
     transform: translateY(-10px);
-    transition: opacity 300ms, transform 300ms;
+    transition:
+      opacity 300ms,
+      transform 300ms;
   }
 
   /* Scrollbar styling */

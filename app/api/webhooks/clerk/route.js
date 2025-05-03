@@ -49,8 +49,8 @@ export async function POST(req) {
       const email = email_addresses[0]?.email_address;
       const fullName = [first_name, last_name].filter(Boolean).join(' ');
 
-      const basicPlan = pricingPlans.find(plan => plan.id === 'basic');
-      const basicPriceId = basicPlan ? basicPlan.priceId : "";
+      const basicPlan = pricingPlans.find((plan) => plan.id === 'basic');
+      const basicPriceId = basicPlan ? basicPlan.priceId : '';
 
       await sql`INSERT INTO users(email, full_name, user_id, price_id, status) 
                 VALUES (${email}, ${fullName}, ${id}, ${basicPriceId}, 'active')`;

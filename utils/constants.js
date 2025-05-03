@@ -1,32 +1,27 @@
 export const pricingPlans = [
-    {
-        id: 'basic',
-        name: 'Basic',
-        price: 'Free',
-        description: 'Perfect for occasional users',
-        items: [
-            '5 PDF summaries',
-            'Standard processing speed',
-            'Email support',
-        ],
-        paymentLink: "/upload",
-        priceId: "basic_free"
-    },
-    {
-        id: 'pro',
-        name: 'Pro',
-        price: 200,
-        description: 'Perfect for occasional users',
-        items: [
-            '10 PDF summaries',
-            'Standard processing speed',
-            'Email support',
-            'Markdown Export',
-        ],
-        priceId: "pro_monthly"
-    },
+  {
+    id: 'basic',
+    name: 'Basic',
+    price: 'Free',
+    description: 'Perfect for occasional users',
+    items: ['5 PDF summaries', 'Standard processing speed', 'Email support'],
+    paymentLink: '/upload',
+    priceId: 'basic_free',
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    price: 200,
+    description: 'Perfect for occasional users',
+    items: [
+      '10 PDF summaries',
+      'Standard processing speed',
+      'Email support',
+      'Markdown Export',
+    ],
+    priceId: 'pro_monthly',
+  },
 ];
-
 
 export const demoText = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
 🎯 SOMMAIRE is an intelligent, web - based tool that simplifies complex documents into clear, concise summaries—powered by state - of - the - art AI.
@@ -62,38 +57,39 @@ export const demoText = `# SOMMAIRE: AI-Powered Document Summarizer 🧠📄
 • 💫 SOMMAIRE is your go - to AI assistant for document summarization—fast, efficient, and built for clarity in the age of information overload.`;
 
 export const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            straggerChildren: 0.2,
-            delayChildren: 0.1,
-        },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      straggerChildren: 0.2,
+      delayChildren: 0.1,
     },
-}
+  },
+};
 
 export const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        tranition: {
-            type: 'spring',
-            damping: 15,
-            striffness: 50,
-            duration: 0.8,
-        }
-    }
-}
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    tranition: {
+      type: 'spring',
+      damping: 15,
+      striffness: 50,
+      duration: 0.8,
+    },
+  },
+};
 
 export const listVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-        opacity: 1, x: 0,
-        transition: {
-            type: 'spring',
-            duration: 0.5,
-            damping: 20,
-            stiffness: 100
-        }
-    }
-}
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+};

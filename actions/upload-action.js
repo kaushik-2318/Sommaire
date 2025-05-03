@@ -8,7 +8,6 @@ import { auth } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
 
 export async function generatePdfText({ fileUrl }) {
-
   if (!fileUrl) {
     return {
       success: false,
@@ -43,9 +42,7 @@ export async function generatePdfText({ fileUrl }) {
 }
 
 export async function generatePdfSummary({ pdfText, fileName }) {
-
   try {
-
     let summary;
     try {
       summary = await generateSummaryFromOpenAI(pdfText);
@@ -85,10 +82,18 @@ export async function generatePdfSummary({ pdfText, fileName }) {
   }
 }
 
-async function savePdfSummary({ userId, fileUrl, summary, title, fileName, key }) {
+async function savePdfSummary({
+  userId,
+  fileUrl,
+  summary,
+  title,
+  fileName,
+  key,
+}) {
   try {
     const sql = await getDbConnection();
-    const [savedSummary] = await sql`INSERT INTO pdf_summaries(user_id, original_file_url, summary_text, title, file_name, file_key ) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName}, ${key}) RETURNING id, summary_text;`;
+    const [savedSummary] =
+      await sql`INSERT INTO pdf_summaries(user_id, original_file_url, summary_text, title, file_name, file_key ) VALUES (${userId}, ${fileUrl}, ${summary}, ${title}, ${fileName}, ${key}) RETURNING id, summary_text;`;
     return savedSummary;
   } catch (error) {
     console.error('Failed to save summary', error);
@@ -96,7 +101,13 @@ async function savePdfSummary({ userId, fileUrl, summary, title, fileName, key }
   }
 }
 
-export async function storePdfSummaryAction({ fileUrl, summary, title, fileName, key, }) {
+export async function storePdfSummaryAction({
+  fileUrl,
+  summary,
+  title,
+  fileName,
+  key,
+}) {
   let saveSummary;
   try {
     const { userId } = await auth();
@@ -107,7 +118,14 @@ export async function storePdfSummaryAction({ fileUrl, summary, title, fileName,
       };
     }
 
-    saveSummary = await savePdfSummary({ userId, fileUrl, summary, title, fileName, key, });
+    saveSummary = await savePdfSummary({
+      userId,
+      fileUrl,
+      summary,
+      title,
+      fileName,
+      key,
+    });
 
     if (!saveSummary) {
       return {

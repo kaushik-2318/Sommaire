@@ -1,23 +1,22 @@
-import React from "react";
-import { Skeleton } from "../ui/skeleton";
-import { Card } from "../ui/card";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { Skeleton } from '../ui/skeleton';
+import { Card } from '../ui/card';
+import { cn } from '@/lib/utils';
 
 export default function LoadingSkeleton() {
   return (
-    <Card className="relative px-2 h-[700px] w-[600px] max-w-lg mx-auto overflow-hidden bg-linear-to-br from-background via-background/95 to-rose-500/5 backdrop-blur-lg shadow-2xl rounded-3xl border border-rose-500/10">
-
-      <div className="absolute top-0 left-0 right-0 z-20 bg-background/80 backdrop-blur-xs pt-4 pb-2 border-b border-rose-500/10">
-        <div className="flex px-4 gap-1.5">
+    <Card className="from-background via-background/95 relative mx-auto h-[700px] w-[600px] max-w-lg overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg">
+      <div className="bg-background/80 absolute top-0 right-0 left-0 z-20 border-b border-rose-500/10 pt-4 pb-2 backdrop-blur-xs">
+        <div className="flex gap-1.5 px-4">
           {[1, 2, 3].map((_, index) => (
             <div
               key={index}
-              className="h-1.5 flex-1  bg-rose-500/10 rounded-full overflow-hidden"
+              className="h-1.5 flex-1 overflow-hidden rounded-full bg-rose-500/10"
             >
               <div
                 className={cn(
-                  "h-full bg-linear-to-r from-gray-500 to-rose-600 animate-pulse",
-                  index === 0 ? "w-full" : "w-0"
+                  'h-full animate-pulse bg-linear-to-r from-gray-500 to-rose-600',
+                  index === 0 ? 'w-full' : 'w-0'
                 )}
               />
             </div>
@@ -25,21 +24,21 @@ export default function LoadingSkeleton() {
         </div>
       </div>
 
-      <div className="h-full overflow-y-auto scrollbar-hide pt-16 pb-20 ">
+      <div className="scrollbar-hide h-full overflow-y-auto pt-16 pb-20">
         <div className="px-6">
-          <div className="flex flex-col gap-2 mb-6 sticky top-0 pt-2 pb-4 bg-background/80 backdrop-blur-xs z-10">
-            <Skeleton className="h-12 w-3/4 mx-auto bg-rose-500/10" />
+          <div className="bg-background/80 sticky top-0 z-10 mb-6 flex flex-col gap-2 pt-2 pb-4 backdrop-blur-xs">
+            <Skeleton className="mx-auto h-12 w-3/4 bg-rose-500/10" />
           </div>
 
           <div className="space-y-4">
             {[1, 2, 3].map((_, index) => (
               <div
                 key={`number-${index}`}
-                className="group relative bg-linear-to-br from-gray-500/[0.08] to-gray-600/[0.03] rounded-2xl p-4 border border-gray-500/10"
+                className="group relative rounded-2xl border border-gray-500/10 bg-linear-to-br from-gray-500/[0.08] to-gray-600/[0.03] p-4"
               >
-                <div className="relative flex gap-4 items-center">
+                <div className="relative flex items-center gap-4">
                   <div className="flex items-center">
-                    <Skeleton className="h-8 w-8 bg-rose-500/10 rounded-full" />
+                    <Skeleton className="h-8 w-8 rounded-full bg-rose-500/10" />
                   </div>
                   <div className="flex-1">
                     <Skeleton className="h-6 w-full bg-rose-500/10" />
@@ -51,10 +50,10 @@ export default function LoadingSkeleton() {
             {[1, 2].map((_, index) => (
               <div
                 key={`emoji-${index}`}
-                className="group relative bg-linear-to-br from-gray-200/[0.08] to-gray-400/[0.03] p-4 rounded-2xl border border-gray-500/10"
+                className="group relative rounded-2xl border border-gray-500/10 bg-linear-to-br from-gray-200/[0.08] to-gray-400/[0.03] p-4"
               >
-                <div className="relative flex gap-3 items-start">
-                  <Skeleton className="h-6 w-6 bg-rose-500/10 rounded-full shrink-0" />
+                <div className="relative flex items-start gap-3">
+                  <Skeleton className="h-6 w-6 shrink-0 rounded-full bg-rose-500/10" />
                   <div className="flex-1">
                     <Skeleton className="h-6 w-full bg-rose-500/10" />
                   </div>
@@ -65,10 +64,10 @@ export default function LoadingSkeleton() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-xs border-t border-rose-500/10">
-        <div className="flex justify-between items-center">
-          <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500/50 to-rose-600/50" />
-          <div className="flex gap-2 ">
+      <div className="bg-background/80 absolute right-0 bottom-0 left-0 border-t border-rose-500/10 p-4 backdrop-blur-xs">
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-12 w-12 rounded-full bg-linear-to-br from-rose-500/50 to-rose-600/50" />
+          <div className="flex gap-2">
             {[1, 2, 3, 4, 5, 6].map((_, index) => (
               <Skeleton
                 key={index}
@@ -77,7 +76,7 @@ export default function LoadingSkeleton() {
             ))}
           </div>
 
-          <Skeleton className="rounded-full w-12 h-12 bg-linear-to-br from-rose-500/50 to-rose-600/50" />
+          <Skeleton className="h-12 w-12 rounded-full bg-linear-to-br from-rose-500/50 to-rose-600/50" />
         </div>
       </div>
     </Card>

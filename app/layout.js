@@ -1,34 +1,34 @@
-import "./globals.css";
-import { Source_Sans_3 as FontSans } from "next/font/google";
-import Header from "@/components/common/header";
-import Footer from "@/components/common/footer";
-import { ClerkProvider } from "@clerk/nextjs";
-import { Toaster } from "@/components/ui/sonner";
-import { ORIGIN_URL } from "@/utils/helper";
-import Preloader from "@/components/common/preloader";
-import LoadingBar from "@/components/common/loading-bar";
+import './globals.css';
+import { Source_Sans_3 as FontSans } from 'next/font/google';
+import Header from '@/components/common/header';
+import Footer from '@/components/common/footer';
+import { ClerkProvider } from '@clerk/nextjs';
+import { Toaster } from '@/components/ui/sonner';
+import { ORIGIN_URL } from '@/utils/helper';
+import Preloader from '@/components/common/preloader';
+import LoadingBar from '@/components/common/loading-bar';
 
 const fontSans = FontSans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: '--font-sans',
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata = {
-  title: "Sommaire - AI Powered PDF Summarization",
+  title: 'Sommaire - AI Powered PDF Summarization',
   description:
-    "Save hours of reading time with AI powered PDF summarization. Transform lengthy PDFs into clear, accurate summaries in second with our advanced AI Technology.",
+    'Save hours of reading time with AI powered PDF summarization. Transform lengthy PDFs into clear, accurate summaries in second with our advanced AI Technology.',
   openGraph: {
     images: [
       {
-        url: "/sommaire.png",
+        url: '/sommaire.png',
       },
     ],
   },
   metadataBase: new URL(ORIGIN_URL),
   alternates: {
     cononical: ORIGIN_URL,
-  }
+  },
 };
 
 export default function RootLayout({ children }) {

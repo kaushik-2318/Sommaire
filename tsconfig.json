@@ -2,16 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -33,9 +27,15 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "app/sign-up/[[...sign-up]]/page.js", "components/upload/loading-skeleton.js", "components/upload/upload-header.js", "components/summaries/download-summary-button.js", "components/summaries/content-section.js", "utils/summary-helper.js", "app/contact/page.js", "lib/user.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "app/sign-up/[[...sign-up]]/page.js",
+    "components/upload/loading-skeleton.js",
+    "components/upload/upload-header.js",
+    "components/summaries/download-summary-button.js",
+    "components/summaries/content-section.js",
+    "utils/summary-helper.js",
+    "app/contact/page.js",
+    "lib/user.js"
+  ],
+  "exclude": ["node_modules"]
 }

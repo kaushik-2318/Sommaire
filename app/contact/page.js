@@ -1,8 +1,12 @@
-import BgGradient from "@/components/common/bg-gradient"
-import { MotionDiv, MotionH1, MotionP } from "@/components/common/motion-wrapper"
-import ContactForm from "@/components/contact/contact-form"
-import ContactInfo from "@/components/contact/contact-info"
-import { containerVariants, itemVariants } from "@/utils/constants"
+import BgGradient from '@/components/common/bg-gradient';
+import {
+  MotionDiv,
+  MotionH1,
+  MotionP,
+} from '@/components/common/motion-wrapper';
+import ContactForm from '@/components/contact/contact-form';
+import ContactInfo from '@/components/contact/contact-info';
+import { containerVariants, itemVariants } from '@/utils/constants';
 
 export default function ContactPage() {
   return (
@@ -24,21 +28,33 @@ export default function ContactPage() {
             >
               Get in Touch
             </MotionH1>
-            <MotionP viewport={{ once: true }} variants={itemVariants} className="mt-4 text-lg text-gray-600">
+            <MotionP
+              viewport={{ once: true }}
+              variants={itemVariants}
+              className="mt-4 text-lg text-gray-600"
+            >
               Have questions or feedback? We'd love to hear from you.
             </MotionP>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-2">
-            <MotionDiv variants={itemVariants} viewport={{ once: true }} className="order-2 lg:order-1">
+            <MotionDiv
+              variants={itemVariants}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
               <ContactInfo />
             </MotionDiv>
-            <MotionDiv variants={itemVariants} viewport={{ once: true }} className="order-1 lg:order-2">
+            <MotionDiv
+              variants={itemVariants}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
               <ContactForm />
             </MotionDiv>
           </div>
         </div>
       </MotionDiv>
     </div>
-  )
+  );
 }

@@ -3,8 +3,7 @@
 import { getDbConnection } from '@/lib/db';
 import { currentUser } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
-import { utapi } from "@/app/server/uploadthing";
-
+import { utapi } from '@/app/server/uploadthing';
 
 export async function deleteSummaryAction({ summaryId }) {
   try {
@@ -16,7 +15,8 @@ export async function deleteSummaryAction({ summaryId }) {
     }
 
     const sql = await getDbConnection();
-    const result = await sql`DELETE FROM pdf_summaries WHERE id = ${summaryId} AND user_id = ${userId} RETURNING file_key;`;
+    const result =
+      await sql`DELETE FROM pdf_summaries WHERE id = ${summaryId} AND user_id = ${userId} RETURNING file_key;`;
 
     const key = result[0]?.file_key;
 
@@ -26,7 +26,7 @@ export async function deleteSummaryAction({ summaryId }) {
       return {
         success: false,
         error: 'Failed to delete file',
-      }
+      };
     }
 
     if (result.length > 0) {

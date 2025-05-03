@@ -1,5 +1,5 @@
 import { BrainCircuit, FileOutput, FileText, MoveRight } from 'lucide-react';
-import { MotionH2, MotionH3 , MotionDiv} from '../common/motion-wrapper';
+import { MotionH2, MotionH3, MotionDiv } from '../common/motion-wrapper';
 
 const steps = [
   {
@@ -38,10 +38,22 @@ export default function HowitworksSection() {
         </div>
 
         <div className="mb-16 text-center">
-          <MotionH2 viewport={{ once: true }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-4 text-xl font-bold text-rose-500 uppercase">
+          <MotionH2
+            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-4 text-xl font-bold text-rose-500 uppercase"
+          >
             How it works
           </MotionH2>
-          <MotionH3 viewport={{ once: true }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mx-auto max-w-2xl text-3xl font-bold">
+          <MotionH3
+            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mx-auto max-w-2xl text-3xl font-bold"
+          >
             Transform any PDF into an easy-to-digest summary in three simple
             steps
           </MotionH3>
@@ -49,10 +61,23 @@ export default function HowitworksSection() {
 
         <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           {steps.map((step, idx) => (
-            <MotionDiv viewport={{ once: true }} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: idx * 0.2 }} className="relative flex items-stretch" key={idx}>
+            <MotionDiv
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              className="relative flex items-stretch"
+              key={idx}
+            >
               <StepItem {...step} />
               {idx < steps.length - 1 && (
-                <MotionDiv viewport={{ once: true }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: idx * 0.2 + 0.3 }} className="absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 transform md:block">
+                <MotionDiv
+                  viewport={{ once: true }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: idx * 0.2 + 0.3 }}
+                  className="absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 transform md:block"
+                >
                   <MoveRight
                     size={32}
                     strokeWidth={1}
@@ -64,7 +89,7 @@ export default function HowitworksSection() {
           ))}
         </div>
       </div>
-    </section >
+    </section>
   );
 }
 
