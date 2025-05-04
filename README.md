@@ -186,13 +186,18 @@
    # Authentication
    CLERK_SECRET_KEY=your_clerk_secret_key
    CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_WEBHOOK_SECRET=your_clerk_webhook_secret
    
    # File Upload
-   UPLOADTHING_SECRET=your_uploadthing_secret
-   UPLOADTHING_APP_ID=your_uploadthing_app_id
+   UPLOADTHING_TOKEN=your_uploadthing_token
    
    # Database
    DATABASE_URL=your_neon_database_url
+
+   # Payment
+   NEXT_PUBLIC_RAZORPAY_KEY_ID=your_razorpay_key_id
+   RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+   RAZORPAY_PLAN_ID=your_razorpay_plan_id
    ```
 
 4. **Start the development server**
