@@ -251,7 +251,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
   [![Email](https://img.shields.io/badge/Email-kauhsikverma321%40gmail.com-EA4335?style=for-the-badge&logo=gmail)](mailto:kauhsikverma321@gmail.com)
   [![Website](https://img.shields.io/badge/Website-kaushikverma.me-000000?style=for-the-badge&logo=vercel)](https://kaushikverma.me/)
-  [![GitHub](https://img.shields.io/badge/GitHub-kaushik-2318-181717?style=for-the-badge&logo=github)](https://github.com/kaushik-2318)
+  [![GitHub](https://img.shields.io/badge/GitHub-kaushik--2318-181717?style=for-the-badge&logo=github)](https://github.com/kaushik-2318)
 </div>
 
 ## 🙏 Acknowledgements
