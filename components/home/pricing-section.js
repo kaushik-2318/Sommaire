@@ -28,8 +28,8 @@ export default function PricingSection() {
           </h2>
         </MotionDiv>
         <div className="relative flex flex-col items-center justify-center gap-8 lg:flex-row lg:items-stretch">
-          <PricingCardBasic key={'basic'} {...pricingPlans[0]} />
           <PricingCardPro key={'pro'} {...pricingPlans[1]} />
+          <PricingCardBasic key={'basic'} {...pricingPlans[0]} />
         </div>
       </div>
     </MotionSection>

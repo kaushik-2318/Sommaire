@@ -21,7 +21,7 @@ export default function CTASection() {
               <Button
                 size={'lg'}
                 variant={'link'}
-                className="w-full bg-linear-to-r from-slate-900 to-rose-500 text-white transition-all duration-300 hover:from-rose-500 hover:to-slate-900 min-[400px]:w-auto"
+                className="w-full bg-linear-to-r from-slate-900 to-rose-500 text-white transition-colors duration-1000 hover:from-rose-500 hover:to-slate-900 min-[400px]:w-auto"
               >
                 <Link
                   href="/sign-in"

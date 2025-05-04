@@ -27,7 +27,7 @@ export default async function SummaryPage(props) {
   const readingTime = Math.ceil((word_count || 0) / 200);
 
   return (
-    <div className="relative isolate min-h-screen bg-linear-to-b from-rose-100/60 to-white">
+    <div className="relative isolate mb-16 min-h-screen bg-linear-to-b from-rose-100/60 to-white">
       <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
       <div className="conatiner mx-auto flex flex-col gap-4">
         <div className="px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
@@ -63,7 +63,7 @@ export default async function SummaryPage(props) {
               {word_count?.toLocaleString()} words
             </div>
 
-            <div className="relative mt-8 flex justify-center sm:mt-6">
+            <div className="relative mt-8 flex items-center justify-center px-2 sm:mt-6 sm:px-14 md:px-20 lg:px-6">
               <SummaryViewer summary={summary_text} />
             </div>
           </div>

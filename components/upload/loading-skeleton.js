@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 export default function LoadingSkeleton() {
   return (
-    <Card className="from-background via-background/95 relative mx-auto h-[700px] w-[600px] max-w-lg overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg">
+    <Card className="from-background via-background/95 relative mx-auto h-[700px] w-full overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg sm:w-[500px]">
       <div className="bg-background/80 absolute top-0 right-0 left-0 z-20 border-b border-rose-500/10 pt-4 pb-2 backdrop-blur-xs">
         <div className="flex gap-1.5 px-4">
           {[1, 2, 3].map((_, index) => (

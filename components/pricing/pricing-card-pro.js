@@ -72,7 +72,7 @@ export default async function PricingCardPro({
         <MotionDiv
           viewport={{ once: true }}
           variants={listVariants}
-          className="flex w-full justify-center space-y-2"
+          className="flex w-full justify-center space-y-2 no-underline"
         >
           {priceId === 'basic_free' ? (
             <PaymentButton
@@ -80,10 +80,10 @@ export default async function PricingCardPro({
               razorpayKey={process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID}
             />
           ) : (
-            <Link className="w-full" href="/upload">
+            <Link className="w-full no-underline" href="/upload">
               <Button
                 variant="link"
-                className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-rose-900 bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white duration-1000 hover:from-rose-500 hover:to-rose-800"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white no-underline transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800"
               >
                 Try Now <ArrowRight size={18} />
               </Button>

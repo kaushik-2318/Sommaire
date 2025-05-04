@@ -53,8 +53,8 @@ export default function RefundPolicyPage() {
               <div className="space-y-8">
                 <PolicySection
                   icon={<Ban className="h-10 w-10 text-rose-500" />}
-                  title="No Cancellations"
-                  description="Once a product or service has been purchased or an order has been placed through our website, it cannot be cancelled under any circumstances."
+                  title="Cancellation Policy"
+                  description="You can cancel your subscription at any time. Please note that all purchases are final and non-refundable.Once you cancel your subscription, it will be deactivated immediately, and access to premium features will be removed right away."
                   cancellation="Click here to Cancel Subscription"
                 />
 

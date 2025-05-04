@@ -67,7 +67,7 @@ export default function PricingCardBasic({
             href={paymentLink}
             className={cn(
               'Markdown Export',
-              'flex w-full items-center justify-center gap-2 rounded-full border-2 bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white duration-1000 hover:from-rose-500 hover:to-rose-800',
+              'flex w-full items-center justify-center gap-2 rounded-full border-2 bg-linear-to-r from-rose-800 to-rose-500 py-2 text-white transition-colors duration-1000 hover:from-rose-500 hover:to-rose-800',
               id === 'pro'
                 ? 'border-rose-900'
                 : 'border-rose-100 from-rose-400 to-rose-500'

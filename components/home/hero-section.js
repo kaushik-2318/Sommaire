@@ -78,7 +78,7 @@ export default function HeroSection() {
       >
         <Button
           variant={'link'}
-          className="mt-6 rounded-full bg-linear-to-r from-slate-900 to-rose-500 px-8 py-6 text-base font-bold text-white shadow-lg transition-all duration-300 hover:from-rose-500 hover:to-slate-900 hover:no-underline sm:px-10 sm:py-7 sm:text-lg lg:mt-16 lg:px-12 lg:py-8 lg:text-xl"
+          className="mt-6 rounded-full bg-linear-to-r from-slate-900 to-rose-500 px-8 py-6 text-base font-bold text-white shadow-lg transition-colors duration-1000 hover:bg-linear-to-r hover:from-rose-500 hover:to-slate-900 hover:no-underline sm:px-10 sm:py-7 sm:text-lg lg:mt-16 lg:px-12 lg:py-8 lg:text-xl"
         >
           <Link href="/#pricing" className="flex items-center gap-2">
             <span>Try Sommaire</span>

@@ -4,9 +4,7 @@ import Header from '@/components/common/header';
 import Footer from '@/components/common/footer';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from '@/components/ui/sonner';
-import { ORIGIN_URL } from '@/utils/helper';
 import Preloader from '@/components/common/preloader';
-import LoadingBar from '@/components/common/loading-bar';
 
 const fontSans = FontSans({
   variable: '--font-sans',
@@ -25,9 +23,9 @@ export const metadata = {
       },
     ],
   },
-  metadataBase: new URL(ORIGIN_URL),
+  metadataBase: new URL('https://sommaire-kv.vercel.app'),
   alternates: {
-    cononical: ORIGIN_URL,
+    cononical: 'https://sommaire-kv.vercel.app',
   },
 };
 
@@ -36,8 +34,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`${fontSans.variable} font-sans antialiased`}>
-          {/* <Preloader /> */}
-          {/* <LoadingBar /> */}
+          <Preloader />
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>

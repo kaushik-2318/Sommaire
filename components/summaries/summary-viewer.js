@@ -34,7 +34,7 @@ export default function SummaryViewer({ summary }) {
     .map(parseSection);
 
   return (
-    <Card className="from-background via-background/95 relative h-[500px] w-full overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg sm:h-[600px] lg:h-[700px] xl:w-[600px]">
+    <Card className="from-background via-background/95 relative h-[600px] w-full overflow-hidden rounded-3xl border border-rose-500/10 bg-linear-to-br to-rose-500/5 px-2 shadow-2xl backdrop-blur-lg sm:h-[600px] md:w-[500px] lg:h-[700px]">
       <ProgressBar sections={sections} currentSection={currentSection} />
       <MotionDiv
         viewport={{ once: true }}

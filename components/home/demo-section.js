@@ -40,7 +40,7 @@ export default function DemoSection() {
             </MotionH3>
           </div>
         </div>
-        <div className="mt-10 flex items-center justify-center px-2 sm:px-4 lg:px-6">
+        <div className="mt-10 flex items-center justify-center px-2 sm:px-14 md:px-20 lg:px-6">
           <MotionDiv
             viewport={{ once: true }}
             initial={{ opacity: 0 }}
