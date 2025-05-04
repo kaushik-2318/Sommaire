@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo.png" alt="Sommaire Logo" width="200"/>
+  <img src="public/log.png" alt="Sommaire Logo" width="200"/>
   <h1>Sommaire</h1>
   <p><strong>AI-Powered Document Summarization Platform</strong></p>
   
