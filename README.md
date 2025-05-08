@@ -30,7 +30,7 @@
 
 ## 🎯 Overview
 
-**Sommaire** (French for "summary") is an intelligent document summarization platform that transforms complex PDFs into clear, concise summaries using state-of-the-art AI technology. 
+**Sommaire** (French for "summary") is an intelligent document summarization platform that transforms complex PDFs into clear, concise summaries using state-of-the-art AI technology.
 
 <details>
 <summary><strong>Why Sommaire?</strong></summary>
@@ -90,7 +90,7 @@
 <br>
 
 - **Framework**: [Next.js 15](https://nextjs.org/) with React 19
-- **Styling**: 
+- **Styling**:
   - [Tailwind CSS 4](https://tailwindcss.com/) for utility-first CSS
   - [shadcn/ui](https://ui.shadcn.com/) for accessible, customizable UI components
 - **UI Components**:
@@ -109,10 +109,10 @@
 
 - **Runtime**: Next.js App Router with Server Components and Server Actions
 - **Authentication**: [Clerk](https://clerk.dev/) for user management and authentication
-- **Database**: 
+- **Database**:
   - [Neon Database](https://neon.tech/) (PostgreSQL) for serverless SQL storage
   - Connection via `@neondatabase/serverless`
-- **File Handling**: 
+- **File Handling**:
   - [UploadThing](https://uploadthing.com/) for secure file uploads and storage
   - PDF-parse for document text extraction
 
@@ -122,7 +122,7 @@
 <summary><strong>AI & Document Processing</strong></summary>
 <br>
 
-- **AI Integration**: 
+- **AI Integration**:
   - [Google Generative AI](https://ai.google.dev/) with Gemini 2.0 Flash as primary model
   - [OpenAI API](https://openai.com/blog/openai-api) with GPT-4o model as fallback
 - **Document Processing**:
@@ -137,7 +137,7 @@
 <br>
 
 - **Language**: JavaScript with TypeScript support
-- **Type Safety**: 
+- **Type Safety**:
   - TypeScript for type checking
   - Zod for runtime validation
 - **Code Quality**:
@@ -182,15 +182,15 @@
    # AI Providers
    OPENAI_API_KEY=your_openai_api_key
    GOOGLE_API_KEY=your_google_api_key
-   
+
    # Authentication
    CLERK_SECRET_KEY=your_clerk_secret_key
    CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
    CLERK_WEBHOOK_SECRET=your_clerk_webhook_secret
-   
+
    # File Upload
    UPLOADTHING_TOKEN=your_uploadthing_token
-   
+
    # Database
    DATABASE_URL=your_neon_database_url
 
